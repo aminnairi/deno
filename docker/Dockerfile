@@ -1,4 +1,4 @@
-FROM debian:stable-slim
+FROM debian:stable-slim as build
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -16,3 +16,14 @@ RUN apt-get update \
     && rm -rf /root/.deno \
     && chmod +x /usr/local/bin/deno \
     && useradd -u 1000 -s /bin/sh -m deno
+
+FROM busybox:glibc
+
+COPY --from=build /usr/local/bin/deno /bin/deno
+COPY --from=build /lib/x86_64-linux-gnu/libdl-2.28.so /lib/libdl.so.2
+COPY --from=build /lib/x86_64-linux-gnu/librt-2.28.so /lib/librt.so.1
+COPY --from=build /lib/x86_64-linux-gnu/libgcc_s.so.1 /lib/libgcc_s.so.1
+
+ENTRYPOINT ["./deno"]
+
+CMD ["--version"]
