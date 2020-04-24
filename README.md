@@ -2,6 +2,11 @@
 
 Docker image for Deno.
 
+## Requirements
+
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/) (optional)
+
 ## Usage
 
 ### Docker
