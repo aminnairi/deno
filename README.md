@@ -12,7 +12,7 @@ Docker image for Deno.
 ### Docker
 
 ```console
-$ docker run --rm --volume "$PWD":/home/deno aminnairi/deno mod.ts
+$ docker run --rm --user deno --workdir /home/deno --volume "$PWD":/home/deno aminnairi/deno deno mod.ts
 ```
 
 Where `mod.ts` is the script to run.
@@ -29,6 +29,9 @@ version: "3"
 services:
     deno:
         image: aminnairi/deno
+        user: deno
+        workdir: /home/deno
+        entrypoint: deno
         volumes:
             - .:/home/deno
 ```
@@ -66,4 +69,11 @@ $ make install
 
 ```console
 $ make uninstall
+```
+
+## Shell alias
+
+```console
+$ alias deno='docker run --rm --user deno --workdir /home/deno --volume "$PWD":/home/deno aminnairi/deno deno'
+$ deno mod.ts
 ```
