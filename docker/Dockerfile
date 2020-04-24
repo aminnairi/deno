@@ -24,6 +24,6 @@ COPY --from=build /lib/x86_64-linux-gnu/libdl-2.28.so /lib/libdl.so.2
 COPY --from=build /lib/x86_64-linux-gnu/librt-2.28.so /lib/librt.so.1
 COPY --from=build /lib/x86_64-linux-gnu/libgcc_s.so.1 /lib/libgcc_s.so.1
 
-ENTRYPOINT ["./deno"]
+ENTRYPOINT ["deno"]
 
 CMD ["--version"]
