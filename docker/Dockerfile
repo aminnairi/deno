@@ -14,3 +14,6 @@ COPY --from=build /root/.deno/bin/deno /bin/deno
 COPY --from=build /lib/x86_64-linux-gnu/libdl-2.28.so /lib/libdl.so.2
 COPY --from=build /lib/x86_64-linux-gnu/librt-2.28.so /lib/librt.so.1
 COPY --from=build /lib/x86_64-linux-gnu/libgcc_s.so.1 /lib/libgcc_s.so.1
+
+RUN addgroup -g 1000 -S deno \
+    && adduser -h /home/deno -g "" -s /bin/sh -G deno -S -D -u 1000 deno
