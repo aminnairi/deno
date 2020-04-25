@@ -75,10 +75,16 @@ $ make uninstall
 
 ```console
 $ alias deno='docker run --rm --user deno --workdir /home/deno --volume "$PWD":/home/deno aminnairi/deno deno'
+$ echo 'console.log("Hello, world!");' > mod.ts
 $ deno mod.ts
 ```
 
 ## GitHub Action
+
+```console
+$ mkdir -p .github/workflows/
+$ touch .github/workflows/github_ci.yaml
+```
 
 ```yaml
 name: GitHub CI
