@@ -77,3 +77,30 @@ $ make uninstall
 $ alias deno='docker run --rm --user deno --workdir /home/deno --volume "$PWD":/home/deno aminnairi/deno deno'
 $ deno mod.ts
 ```
+
+## GitHub Action
+
+```yaml
+name: GitHub CI
+
+on:
+  push:
+    branches:
+      - latest
+
+  pull_request:
+    branches:
+      - latest
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Test the module
+        run: sudo docker run --rm --volume "$GITHUB_WORKSPACE":/home/deno aminnairi/deno deno test
+```
