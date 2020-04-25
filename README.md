@@ -1,5 +1,7 @@
 # deno
 
+[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/aminnairi/deno)](https://hub.docker.com/r/aminnairi/deno) [![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/aminnairi/deno)](https://hub.docker.com/r/aminnairi/deno) [![Docker Pulls](https://img.shields.io/docker/pulls/aminnairi/deno)](https://hub.docker.com/r/aminnairi/deno)
+
 Docker image for Deno.
 
 ## Requirements
