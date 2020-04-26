@@ -14,7 +14,7 @@ Docker image for Deno.
 ### Docker
 
 ```console
-$ docker run --rm --user deno --workdir /home/deno --volume "$PWD":/home/deno aminnairi/deno deno mod.ts
+$ docker run --rm --tty --interactive --user deno --workdir /home/deno --volume "$PWD":/home/deno aminnairi/deno deno mod.ts
 ```
 
 Where `mod.ts` is the script to run.
@@ -32,6 +32,8 @@ services:
     deno:
         image: aminnairi/deno
         user: deno
+        tty: true
+        stdin_open: true
         workdir: /home/deno
         entrypoint: deno
         volumes:
@@ -76,7 +78,7 @@ $ make uninstall
 ## Shell alias
 
 ```console
-$ alias deno='docker run --rm --user deno --workdir /home/deno --volume "$PWD":/home/deno aminnairi/deno deno'
+$ alias deno='docker run --rm --tty --interactive --user deno --workdir /home/deno --volume "$PWD":/home/deno aminnairi/deno deno'
 $ echo 'console.log("Hello, world!");' > mod.ts
 $ deno mod.ts
 ```
