@@ -1,6 +1,6 @@
 # deno
 
-[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/aminnairi/deno)](https://hub.docker.com/r/aminnairi/deno) [![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/aminnairi/deno)](https://hub.docker.com/r/aminnairi/deno) [![Docker Pulls](https://img.shields.io/docker/pulls/aminnairi/deno)](https://hub.docker.com/r/aminnairi/deno)
+[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/aminnairi/deno)](https://hub.docker.com/r/aminnairi/deno) [![Docker Image Size (latest semver)](https://img.shields.io/docker/image-size/aminnairi/deno/latest)](https://hub.docker.com/r/aminnairi/deno) [![Docker Pulls](https://img.shields.io/docker/pulls/aminnairi/deno)](https://hub.docker.com/r/aminnairi/deno)
 
 Docker image for Deno.
 
@@ -14,7 +14,7 @@ Docker image for Deno.
 ### Docker
 
 ```console
-$ docker run --rm --tty --interactive --user deno --workdir /home/deno --volume "$PWD":/home/deno aminnairi/deno deno mod.ts
+$ docker run --rm --tty --interactive --user deno --workdir /home/deno --volume "$PWD":/home/deno aminnairi/deno:latest deno mod.ts
 ```
 
 Where `mod.ts` is the script to run.
@@ -30,7 +30,7 @@ version: "3"
 
 services:
     deno:
-        image: aminnairi/deno
+        image: aminnairi/deno:latest
         user: deno
         tty: true
         stdin_open: true
@@ -46,39 +46,10 @@ $ docker-composer run --rm deno mod.ts
 
 Where `mod.ts` is the script to run.
 
-## Installation
-
-### Hub Docker
-
-```console
-$ docker pull aminnairi/deno
-```
-
-### Manual
-
-#### Requirements
-
-- [Git](https://git-scm.com/)
-- [Docker](https://www.docker.com/)
-
-#### Installation
-
-```console
-$ git clone https://github.com/aminnairi/deno.git
-$ cd deno
-$ make install
-```
-
-#### Uninstallation
-
-```console
-$ make uninstall
-```
-
 ## Shell alias
 
 ```console
-$ alias deno='docker run --rm --tty --interactive --user deno --workdir /home/deno --volume "$PWD":/home/deno aminnairi/deno deno'
+$ alias deno='docker run --rm --tty --interactive --user deno --workdir /home/deno --volume "$PWD":/home/deno aminnairi/deno:latest deno'
 $ echo 'console.log("Hello, world!");' > mod.ts
 $ deno mod.ts
 ```
@@ -112,5 +83,5 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Test the module
-        run: sudo docker run --rm --volume "$GITHUB_WORKSPACE":/home/deno aminnairi/deno deno test
+        run: sudo docker run --rm --volume "$GITHUB_WORKSPACE":/home/deno aminnairi/deno:latest deno test
 ```
