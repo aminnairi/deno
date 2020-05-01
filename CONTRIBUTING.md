@@ -3,6 +3,7 @@
 ## Requirements
 
 - [Git](https://git-scm.com/)
+- Shell
 - [Docker](https://www.docker.com/)
 
 ## Installation
@@ -14,16 +15,31 @@ $ cd deno
 
 ## Update
 
-Update the [`Dockerfile`](./docker/Dockerfile) file.
+Append changes to the [`Dockerfile`](./docker/Dockerfile).
 
-## Install
+## Staging
 
 ```console
-$ make install
+$ docker build --tag aminnairi/deno:staging --file docker/Dockerfile .
+```
+
+## Test
+
+```console
+$ docker run aminnairi/deno:staging deno --version
 ```
 
 ## Uninstall
 
 ```console
-$ make uninstall
+$ docker rmi -f aminnairi/deno:staging
+```
+
+## Build & publish
+
+```console
+$ docker login
+$ sh build/latest.sh    # for the latest version
+$ sh build/main.sh      # for all the current versions
+$ sh build/old.sh       # for all the versions using the old installer
 ```
