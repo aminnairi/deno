@@ -14,7 +14,7 @@ Docker image for Deno.
 ### Docker
 
 ```console
-$ docker run --rm --tty --interactive --user deno --workdir /home/deno --volume "$PWD":/home/deno aminnairi/deno:latest deno mod.ts
+$ docker run --rm --tty --interactive --user deno --workdir /home/deno --volume "$PWD":/home/deno aminnairi/deno:latest deno run mod.ts
 ```
 
 Where `mod.ts` is the script to run.
@@ -41,7 +41,7 @@ services:
 ```
 
 ```console
-$ docker-composer run --rm deno mod.ts
+$ docker-composer run --rm deno run mod.ts
 ```
 
 Where `mod.ts` is the script to run.
@@ -51,7 +51,7 @@ Where `mod.ts` is the script to run.
 ```console
 $ alias deno='docker run --rm --tty --interactive --user deno --workdir /home/deno --volume "$PWD":/home/deno aminnairi/deno:latest deno'
 $ echo 'console.log("Hello, world!");' > mod.ts
-$ deno mod.ts
+$ deno run mod.ts
 ```
 
 ## GitHub Action
