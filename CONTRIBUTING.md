@@ -17,29 +17,36 @@ $ cd deno
 
 Append changes to the [`Dockerfile`](./docker/Dockerfile).
 
-## Staging
+## Build
 
 ```console
-$ docker build --tag aminnairi/deno:staging --file docker/Dockerfile .
+$ docker build --tag aminnairi/deno:$VERSION --file docker/v$VERSION/Dockerfile --compress --force-rm --no-cache --progress tty --pull --rm .
 ```
+
+Where `$VERSION` is the version to build.
 
 ## Test
 
 ```console
-$ docker run aminnairi/deno:staging deno --version
+$ docker run aminnairi/deno:$VERSION deno --version
+```
+
+## Push
+
+```console
+$ docker login
+$ docker push aminnairi/deno:$VERSION
 ```
 
 ## Uninstall
 
 ```console
-$ docker rmi -f aminnairi/deno:staging
+$ docker rmi -f aminnairi/deno:$VERSION
 ```
 
-## Build & publish
+## Build & publish (old versions)
 
 ```console
 $ docker login
-$ sh build/latest.sh    # for the latest version
-$ sh build/main.sh      # for all the current versions
 $ sh build/old.sh       # for all the versions using the old installer
 ```
