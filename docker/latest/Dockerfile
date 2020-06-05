@@ -6,7 +6,7 @@ WORKDIR /root
 
 RUN apt-get update \
     && apt-get install --no-install-recommends --yes curl unzip ca-certificates \
-    && curl -fsSL https://deno.land/x/install/install.sh | sh -s v1.0.2 \
+    && curl -fsSL https://deno.land/x/install/install.sh | sh -s v1.0.5 \
     && curl -OL https://raw.githubusercontent.com/denoland/deno/master/LICENSE \
     && chmod +x /root/.deno/bin/deno
 
